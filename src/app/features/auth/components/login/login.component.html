@@ -1,0 +1,46 @@
+<div class="login-page">
+  <div class="form-container">
+    <h1>Inicia sesión</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" autocomplete="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" [type]="hidePassword() ? 'password' : 'text'" autocomplete="current-password">
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword.set(!hidePassword())">
+          <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="options-container">
+        <mat-checkbox formControlName="rememberMe">Recordar usuario</mat-checkbox>
+        <a href="#" class="register-link">Regístrate aquí</a>
+      </div>
+
+      <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+
+      <button mat-flat-button class="login-button" type="submit" [disabled]="loginForm.invalid || isLoading()">
+        @if (isLoading()) {
+          <mat-spinner diameter="24"></mat-spinner>
+        } @else {
+          <span>Ingresar</span>
+        }
+      </button>
+
+      @if (loginError()) {
+        <div class="error-message">
+          {{ loginError() }}
+        </div>
+      }
+    </form>
+  </div>
+
+  <div class="illustration-container">
+    <h2>InmoHouse</h2>
+    <img src="assets/images/login-illustration.svg" alt="Ilustración de una persona usando una computadora">
+  </div>
+</div>

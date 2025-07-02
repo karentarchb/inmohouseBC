@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$azure-blue-primary: mat.define-palette(mat.$blue-palette, 700, 100, 800);
+
+$azure-blue-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+
+
+$azure-blue-warn: mat.define-palette(mat.$red-palette);
+
+
+$azure-blue-theme: mat.define-light-theme((
+  color: (
+    primary: $azure-blue-primary,
+    accent: $azure-blue-accent,
+    warn: $azure-blue-warn,
+  )
+));
+
+@include mat.all-component-themes($azure-blue-theme);
