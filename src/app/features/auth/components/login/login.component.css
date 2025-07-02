@@ -19,10 +19,11 @@
 }
 
 h1 {
-  color: #ffffff;
+  color: white;
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .full-width {
@@ -38,10 +39,20 @@ h1 {
 }
 
 .register-link, .forgot-password-link {
-  color: #ffffff;
+  color: white;
   text-decoration: none;
-  font-weight: 500;
 }
+
+.register-link:hover, .forgot-password-link:hover {
+  color: #6385AC;
+}
+
+.forgot-password-link{
+  text-align: center;
+  padding: 25px 0px;
+}
+
+:host ::ng-deep .mdc-label {color: white !important}
 
 .forgot-password-link {
   display: block;
@@ -52,13 +63,13 @@ h1 {
 
 .login-button {
   width: 100%;
-  padding: 18px 0;
+  padding: 22px 0;
   font-size: 1.1rem;
   font-weight: 500;
-  border-radius: 15px;
+  border-radius: 22px;
   margin-bottom: 1rem;
-  box-shadow:  20px 20px 60px #577379,
-             -20px -20px 60px #95a7b7;
+  box-shadow:  20px 20px 60px #617e85,
+             -20px -20px 60px #a0b3c3;
 }
 .login-button:enabled {
   background-color: #6385AC;
@@ -78,7 +89,7 @@ h1 {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   padding: 2rem;
 }
@@ -96,8 +107,7 @@ h1 {
 }
 
 .error-message {
-  color: #c0392b;
+  color: red;
   text-align: center;
   margin-top: 1rem;
-  font-weight: 500;
 }
