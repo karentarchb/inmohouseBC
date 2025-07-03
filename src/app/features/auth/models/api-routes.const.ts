@@ -15,7 +15,11 @@ export const API_ROUTES = {
     DELETE: (id: number) => `${API_BASE_URL}/api/properties/${id}`,
   },
   USERS: {
-    GET_AGENTS: `${API_BASE_URL}/api/users/agents`
+    GET_ALL: `${API_BASE_URL}/api/users`,
+    GET_AGENTS: `${API_BASE_URL}/api/users/agents`,
+    CREATE: `${API_BASE_URL}/api/users`,
+    UPDATE: (id: number) => `${API_BASE_URL}/api/users/${id}`,
+    DELETE: (id: number) => `${API_BASE_URL}/api/users/${id}`,
   },
   STATS: {
     GET_SUMMARY: `${API_BASE_URL}/api/stats/summary`

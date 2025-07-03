@@ -28,17 +28,17 @@ export const routes: Routes = [
       path: 'visualizacion/avanzada',
       loadComponent: () => import('./features/dashboard/visualizacion-avanzada/visualizacion-avanzada.component').then(c => c.VisualizacionAvanzadaComponent)
     },
+    {
+        path: 'admin-panel',
+        loadComponent: () => import('./features/dashboard/admin-panel/admin-panel.component').then(c => c.AdminPanelComponent),
+        canActivate: [adminGuard]
+      },
       {
         path: 'gestion',
         loadComponent: () => import('./features/dashboard/gestion-propiedades/gestion-propiedades.component').then(c => c.GestionPropiedadesComponent),
         canActivate: [authGuard, agentOrAdminGuard]
       }
     ]
-  },
-   {
-    path: 'admin',
-    loadComponent: () => import('./features/dashboard/admin-panel/admin-panel.component').then(c => c.AdminPanelComponent),
-    canActivate: [authGuard, adminGuard]
   },
   {
     path: 'register',

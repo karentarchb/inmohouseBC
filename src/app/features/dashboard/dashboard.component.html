@@ -25,17 +25,21 @@
             <span matListItemTitle>Ver Propiedades</span>
           }
         </a>
-        <a mat-list-item routerLink="gestion" routerLinkActive="active-link">
-          <mat-icon matListItemIcon>edit_square</mat-icon>
-          @if (isSidenavExpanded()) {
-            <span matListItemTitle>Gestionar Propiedades</span>
+        @if (user$ | async; as user) {
+          @if (user.role === 'agente' || user.role === ADMIN_ROLE_ID) {
+            <a mat-list-item routerLink="gestion" routerLinkActive="active-link">
+              <mat-icon matListItemIcon>edit_square</mat-icon>
+              @if (isSidenavExpanded()) {
+                <span matListItemTitle>Gestionar Propiedades</span>
+              }
+            </a>
           }
-        </a>
+        }
 
         @if (user$ | async; as user) {
           @if (user.role === ADMIN_ROLE_ID) {
             <mat-divider></mat-divider>
-            <a mat-list-item routerLink="/admin" routerLinkActive="active-link">
+            <a mat-list-item routerLink="admin-panel" routerLinkActive="active-link">
               <mat-icon matListItemIcon>admin_panel_settings</mat-icon>
               @if (isSidenavExpanded()) {
                 <span matListItemTitle>Panel de Admin</span>

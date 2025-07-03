@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{ isEditMode ? 'Editar' : 'Agregar' }} Usuario</h1>
+
+<form [formGroup]="userForm" (ngSubmit)="onSave()" novalidate>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="role">
+        @for(role of roles; track role) {
+          <mat-option [value]="role">{{role}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" [placeholder]="isEditMode ? 'Dejar en blanco para no cambiar' : ''">
+       @if (!isEditMode && userForm.get('password')?.hasError('required')) {
+        <mat-error>La contraseña es requerida.</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Guardar</button>
+  </div>
+</form>
