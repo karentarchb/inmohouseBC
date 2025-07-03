@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { adminGuard } from './core/guards/admin.guard';
+import { agentOrAdminGuard } from './core/guards/agent-or-admin.guard';
 
 export const routes: Routes = [
   {
@@ -11,25 +13,44 @@ export const routes: Routes = [
     path: 'dashboard',
     loadComponent: () => import('./features/dashboard/dashboard.component')
       .then(c => c.DashboardComponent),
-    /**
-     * RUTA PROTEGIDA: El guard se ejecuta antes de activar esta ruta.
-     */
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'visualizacion',
+        pathMatch: 'full'
+      },
+      {
+        path: 'visualizacion',
+        loadComponent: () => import('./features/dashboard/visualizacion-propiedades/visualizacion-propiedades.component').then(c => c.VisualizacionPropiedadesComponent)
+      },
+      {
+      path: 'visualizacion/avanzada',
+      loadComponent: () => import('./features/dashboard/visualizacion-avanzada/visualizacion-avanzada.component').then(c => c.VisualizacionAvanzadaComponent)
+    },
+      {
+        path: 'gestion',
+        loadComponent: () => import('./features/dashboard/gestion-propiedades/gestion-propiedades.component').then(c => c.GestionPropiedadesComponent),
+        canActivate: [authGuard, agentOrAdminGuard]
+      }
+    ]
+  },
+   {
+    path: 'admin',
+    loadComponent: () => import('./features/dashboard/admin-panel/admin-panel.component').then(c => c.AdminPanelComponent),
+    canActivate: [authGuard, adminGuard]
   },
   {
-    /**
-     * Redirección por defecto: Intenta ir al dashboard.
-     * El guard se encargará de redirigir a /login si no hay sesión.
-     */
+    path: 'register',
+    loadComponent: () => import('./features/auth/components/register/register.component')
+      .then(c => c.RegisterComponent),
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
   },
   {
-    /**
-     * Wildcard/Comodín: Cualquier otra ruta no definida
-     * redirige al dashboard.
-     */
     path: '**',
     redirectTo: '/dashboard'
   }

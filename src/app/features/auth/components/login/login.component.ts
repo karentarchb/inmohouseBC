@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { InfoDialogComponent } from '../../../../shared/components/info-dialog/info-dialog.component';
 
 
 @Component({
@@ -29,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatProgressSpinnerModule,
     MatIconModule,
     MatCheckboxModule,
+    MatDialogModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -37,6 +40,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private dialog = inject(MatDialog);
 
   public isLoading = signal<boolean>(false);
   public loginError = signal<string | null>(null);
@@ -84,5 +88,15 @@ export class LoginComponent {
         next: () => this.router.navigateByUrl('/dashboard'),
         error: (err) => this.loginError.set(err.message || 'Ocurrió un error desconocido.')
       });
+  }
+
+  openForgotPasswordDialog(): void {
+    this.dialog.open(InfoDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Funcionalidad en Desarrollo',
+        message: 'Lo sentimos, en este momento no podemos colaborarte por este medio. <br><br> Por favor, para recuperar tu contraseña envía un correo a: <strong>soporte@inmohouse.com</strong>'
+      }
+    });
   }
 }

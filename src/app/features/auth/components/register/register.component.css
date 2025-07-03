@@ -1,0 +1,113 @@
+.login-page {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #6385AC;
+}
+
+.form-container {
+  margin: 20px;
+  flex: 0 0 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  background-color: #ffffff5f;
+  border-radius: 30px;
+  box-shadow:  20px 20px 60px #547192,
+             -20px -20px 60px #7299c6;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.forgot-password-link {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.login-button {
+  width: 100%;
+  padding: 22px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 22px;
+  margin-bottom: 1rem;
+  box-shadow:  20px 20px 60px #617e85,
+             -20px -20px 60px #a0b3c3;
+}
+.login-button:enabled {
+  background-color: #6385AC;
+  color: white;
+}
+
+.login-button:disabled {
+  background-color: #63656b;
+  color: rgb(175, 172, 172);
+}
+
+.login-button mat-spinner {
+  margin: 0 auto;
+}
+
+.illustration-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem;
+}
+
+.illustration-container h2 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.illustration-container img {
+  max-width: 80%;
+  height: auto;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.bottom-link {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.bottom-link a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.bottom-link a:hover {
+  color: #6A7A9E;
+  text-decoration: none;
+  font-weight: 500;
+}

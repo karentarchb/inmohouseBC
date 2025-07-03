@@ -18,10 +18,10 @@
 
       <div class="options-container">
         <mat-checkbox formControlName="rememberMe" class="remember-check">Recordar usuario</mat-checkbox>
-        <a href="#" class="register-link">Regístrate aquí</a>
+        <a href="/register" class="register-link">Regístrate aquí</a>
       </div>
 
-      <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+      <a (click)="openForgotPasswordDialog()" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
 
       <button mat-flat-button class="login-button" type="submit" [disabled]="loginForm.invalid || isLoading()">
         @if (isLoading()) {

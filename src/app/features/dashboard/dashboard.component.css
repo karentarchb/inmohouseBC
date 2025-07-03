@@ -1,12 +1,71 @@
 .dashboard-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   height: 100vh;
-  background-color: #f0f2f5;
 }
 
-mat-card {
-  max-width: 500px;
+.sidenav {
+  width: 80px;
+  background-color: #6385acbe;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidenav.expanded {
+  width: 250px;
+}
+
+.menu-title {
+  padding: 1.5rem 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+mat-nav-list a {
+  justify-content: center;
+  transition: justify-content 0.3s ease-in-out;
+}
+.sidenav.expanded mat-nav-list a {
+  justify-content: flex-start;
+}
+
+.mat-list-item-title {
+  white-space: nowrap;
+}
+
+mat-nav-list a mat-icon {
+  margin-right: 16px;
+}
+.sidenav:not(.expanded) mat-nav-list a mat-icon {
+  margin-right: 0;
+}
+
+
+.active-link {
+  background-color: rgba(63, 81, 181, 0.1);
+  color: #3f51b5;
+}
+
+.active-link mat-icon {
+  color: #3f51b5;
+}
+
+.logout-container {
+  padding: 1rem;
+}
+
+.logout-container button {
   width: 100%;
+  min-width: unset;
+}
+
+.main-content {
+  padding: 2rem;
+  background-color: #fafafa;
 }

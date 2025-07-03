@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>{{ isEditMode ? 'Editar' : 'Agregar' }} Propiedad</h1>
+
+<form [formGroup]="propertyForm" (ngSubmit)="onSave()" novalidate>
+  <div mat-dialog-content class="dialog-content">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" cdkFocusInitial>
+      @if(propertyForm.get('title')?.hasError('required')) {
+        <mat-error>El título es requerido.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+       @if(propertyForm.get('description')?.hasError('required')) {
+        <mat-error>La descripción es requerida.</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field-half">
+        <mat-label>Precio (USD)</mat-label>
+        <input matInput formControlName="price" type="number" placeholder="Ej: 250000">
+        @if(propertyForm.get('price')?.hasError('required')) {
+          <mat-error>El precio es requerido.</mat-error>
+        }
+        @if(propertyForm.get('price')?.hasError('pattern')) {
+          <mat-error>Ingrese un precio válido.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field-half">
+        <mat-label>Tipo</mat-label>
+        <input matInput formControlName="type" placeholder="Ej: Apartamento, Casa...">
+        @if(propertyForm.get('type')?.hasError('required')) {
+          <mat-error>El tipo es requerido.</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="address">
+      @if(propertyForm.get('address')?.hasError('required')) {
+        <mat-error>La dirección es requerida.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+  <mat-label>Agente Asignado</mat-label>
+  <mat-select formControlName="agent_id">
+    @for (agent of (agents$ | async); track agent.id) {
+      <mat-option [value]="agent.id">{{ agent.name }}</mat-option>
+    }
+  </mat-select>
+  @if(propertyForm.get('agent_id')?.hasError('required')) {
+    <mat-error>Debe asignar un agente.</mat-error>
+  }
+</mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ciudad</mat-label>
+      <input matInput formControlName="city">
+      @if(propertyForm.get('city')?.hasError('required')) {
+        <mat-error>La ciudad es requerida.</mat-error>
+      }
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="propertyForm.invalid">Guardar</button>
+  </div>
+</form>

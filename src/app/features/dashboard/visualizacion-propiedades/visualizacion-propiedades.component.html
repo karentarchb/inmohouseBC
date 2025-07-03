@@ -1,0 +1,65 @@
+<div class="welcome-header">
+  <div class="welcome-icon-container">
+    <mat-icon>home</mat-icon>
+  </div>
+  <h1 class="welcome-title">
+    Bienvenido a <span>InmoHouse</span>
+  </h1>
+  <div class="invite-text">
+    <p>Tu sistema completo de gestión inmobiliaria.</p>
+  </div>
+</div>
+
+<div class="dashboard-grid">
+  <aside class="left-panel">
+    <div class="chart-container">
+      <h2>Resumen General</h2>
+      <canvas baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [type]="barChartType">
+      </canvas>
+    </div>
+  </aside>
+
+  <main class="right-panel">
+    <div class="call-to-action-cards-container">
+      <mat-card class="call-to-action-card" routerLink="/dashboard/visualizacion/avanzada">
+        <mat-icon class="house-icon">business_center</mat-icon>
+        <mat-card-content>
+          <h3>Gestión de Propiedades</h3>
+          <p>Registra, edita y administra todo el inventario de propiedades.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="btn-callto" routerLink="/dashboard/visualizacion/avanzada">Saber más...</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="call-to-action-card" routerLink="/dashboard/visualizacion/avanzada">
+        <mat-icon class="house-icon">groups</mat-icon>
+        <mat-card-content>
+          <h3>CRM de Clientes</h3>
+          <p>Mantén un registro de tus clientes, preferencias e interacciones.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="btn-callto" routerLink="/dashboard/visualizacion/avanzada">Saber más...</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="call-to-action-card" routerLink="/dashboard/visualizacion/avanzada">
+        <mat-icon class="house-icon">bar_chart</mat-icon>
+        <mat-card-content>
+          <h3>Reportes y Analytics</h3>
+          <p>Obtén insights valiosos sobre tu negocio con métricas de rendimiento.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="btn-callto" routerLink="/dashboard/visualizacion/avanzada">Saber más...</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </main>
+</div>
+
+<div class="final-invite">
+  <p>¿Listo para encontrar tu hogar ideal? ¡Explora nuestras propiedades y comienza tu búsqueda hoy mismo!</p>
+</div>

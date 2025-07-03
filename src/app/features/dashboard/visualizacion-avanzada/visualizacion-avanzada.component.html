@@ -1,0 +1,76 @@
+<div class="view-container">
+  <h1>Búsqueda Avanzada de Propiedades</h1>
+
+  <form [formGroup]="filterForm" class="filter-bar">
+    <mat-form-field appearance="outline">
+      <mat-label>Ubicación</mat-label>
+      <mat-select formControlName="city">
+        @for(city of availableCities(); track city){
+          <mat-option [value]="city">{{ city }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo de Inmueble</mat-label>
+      <mat-select formControlName="type">
+         @for(type of availableTypes(); track type){
+          <mat-option [value]="type">{{ type }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rango de Precios</mat-label>
+      <mat-select formControlName="priceRange">
+        @for(range of priceRanges; track range.value){
+          <mat-option [value]="range.value">{{ range.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button color="warn" (click)="clearFilters()" type="button">Limpiar Filtros</button>
+  </form>
+
+  @if (isLoading()) {
+    <div class="loading-container"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
+  } @else if (error()) {
+    <div class="error-container"><mat-icon>error_outline</mat-icon> <p>{{ error() }}</p></div>
+  } @else {
+    <div class="properties-grid">
+      @for (property of filteredProperties(); track property.id) {
+        <mat-card class="property-card">
+          <div class="image-container">
+            <img mat-card-image [src]="getPropertyImageUrl(property)" alt="Foto de {{ property.title }}">
+          </div>
+
+          <mat-card-content class="card-content">
+            <div class="location-line">
+              <span>{{ property.address }} | {{ property.city }}</span>
+            </div>
+            <h2 class="price">{{ +property.price | currency:'USD':'symbol':'1.0-0' }}</h2>
+            <p class="title">{{ property.title }}</p>
+
+            <div class="features">
+              <span><mat-icon>straighten</mat-icon> 105 m²</span>
+              <span><mat-icon>hotel</mat-icon> 2 hab.</span>
+              <span><mat-icon>shower</mat-icon> 2 bañ.</span>
+              <span><mat-icon>directions_car</mat-icon> 1 par.</span>
+            </div>
+
+            <button mat-stroked-button class="contact-button">
+              <mat-icon>mail_outline</mat-icon>
+              <span>Contactar</span>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+     @if(filteredProperties().length === 0){
+      <div class="no-results">
+        <mat-icon>search_off</mat-icon>
+        <p>No se encontraron propiedades con los filtros seleccionados.</p>
+      </div>
+     }
+  }
+</div>

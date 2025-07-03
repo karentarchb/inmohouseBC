@@ -1,0 +1,140 @@
+.welcome-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.welcome-icon-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, #6385AC, #2d78e2);
+  box-shadow: 0 8px 25px rgba(38, 109, 224, 0.4);
+}
+.welcome-icon-container mat-icon {
+  color: white;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+}
+.welcome-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+.welcome-title span {
+  background: linear-gradient(45deg, #6385AC, #2d78e2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.invite-text {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.left-panel {
+  flex: 1 1 300px;
+  max-width: 100%;
+}
+
+.right-panel {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.chart-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.call-to-action-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.call-to-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+}
+
+.call-to-action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.call-to-action-card mat-icon {
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  color: #6385AC;
+}
+
+.call-to-action-card h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+}
+
+.call-to-action-card p {
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1;
+}
+
+.call-to-action-card:hover {
+  background-color: #6385ac8a;
+}
+
+.btn-callto:hover{
+  background-color: #6385ac;
+}
+
+.call-to-action-card .mat-card-actions {
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.final-invite {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #444;
+  max-width: 600px;
+  margin: 4rem auto 2rem auto;
+}
