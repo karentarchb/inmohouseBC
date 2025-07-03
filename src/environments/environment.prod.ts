@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://tu-api-en-produccion.com'
+  apiBaseUrl: 'https://inmohouse-backend.onrender.com'
 };
