@@ -1,46 +1,97 @@
-<div class="login-page">
-  <div class="form-container">
-    <h1>Inicia sesión</h1>
+<div class="login-container" [class.mounted]="mounted()">
+  <div class="background-overlay">
+    <canvas
+      #particleCanvas
+      class="particle-canvas"
+      [width]="canvasWidth"
+      [height]="canvasHeight">
+    </canvas>
+    <div class="gradient-overlay"></div>
+    <div class="blur-circle blur-circle-1"></div>
+    <div class="blur-circle blur-circle-2"></div>
+  </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" type="email" autocomplete="email">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Contraseña</mat-label>
-        <input matInput formControlName="password" [type]="hidePassword() ? 'password' : 'text'" autocomplete="current-password">
-        <button mat-icon-button matSuffix type="button" (click)="hidePassword.set(!hidePassword())">
-          <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <div class="options-container">
-        <mat-checkbox formControlName="rememberMe" class="remember-check">Recordar usuario</mat-checkbox>
-        <a href="/register" class="register-link">Regístrate aquí</a>
+  <div class="main-container">
+    <div class="brand-section">
+      <div class="logo-container">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9,22 9,12 15,12 15,22"/>
+        </svg>
       </div>
+      <h1 class="welcome-title">
+        <span>InmoHouse</span>
+      </h1>
+      <div class="invite-text">
+        <p>Bienvenido a tu sistema de gestión inmobiliaria</p>
+      </div>
+    </div>
+    <div class="form-container">
+      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate class="login-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" autocomplete="email">
+          @if (loginForm.get('email')?.hasError('required')) {
+            <mat-error>El correo es requerido</mat-error>
+          }
+        </mat-form-field>
 
-      <a (click)="openForgotPasswordDialog()" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" [type]="hidePassword() ? 'password' : 'text'" autocomplete="current-password">
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword.set(!hidePassword())">
+            <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          @if (loginForm.get('password')?.hasError('required')) {
+            <mat-error>La contraseña es requerida</mat-error>
+          }
+        </mat-form-field>
 
-      <button mat-flat-button class="login-button" type="submit" [disabled]="loginForm.invalid || isLoading()">
-        @if (isLoading()) {
-          <mat-spinner diameter="24"></mat-spinner>
-        } @else {
-          <span>Ingresar</span>
-        }
-      </button>
-
-      @if (loginError()) {
-        <div class="error-message">
-          {{ loginError() }}
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" formControlName="rememberMe" name="rememberMe">
+            <span class="checkmark"></span>
+            <span class="label-text">Recordarme</span>
+          </label>
+          <a (click)="openForgotPasswordDialog()" class="forgot-link">¿Olvidaste tu contraseña?</a>
         </div>
-      }
-    </form>
-  </div>
 
-  <div class="illustration-container">
-    <h2>InmoHouse</h2>
-    <img class="login-ilustration" src="assets/images/login-illustration.svg" alt="Ilustración de una persona usando una computadora">
-  </div>
+        <button
+          type="submit"
+          class="login-button"
+          [disabled]="loginForm.invalid || isLoading()"
+          [class.loading]="isLoading()">
+          <div class="button-overlay"></div>
+          <div class="button-content">
+            @if (isLoading()) {
+              <mat-spinner diameter="24"></mat-spinner>
+            } @else {
+              <span>Iniciar Sesión →</span>
+            }
+          </div>
+        </button>
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span class="divider-text">o continúa con</span>
+          <div class="divider-linet"></div>
+        </div>
+
+        @if (loginError()) {
+          <div class="error-message">
+            {{ loginError() }}
+          </div>
+        }
+      </form>
+
+      <div class="signup-section">
+        <p class="signup-text">
+          ¿No tienes una cuenta?
+          <a href="/register" class="signup-link">Regístrate aquí</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2025 InmoHouse. Todos los derechos reservados.</p>
+    </div>
 </div>
