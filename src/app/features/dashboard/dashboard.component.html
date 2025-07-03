@@ -12,9 +12,29 @@
     <div class="menu-container">
       <h2 class="menu-title">
         @if (isSidenavExpanded()) {
-          <span>InmoHouse</span>
+          <div class="brand-section">
+            <div class="logo-container">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9,22 9,12 15,12 15,22"/>
+              </svg>
+            </div>
+            <h3 class="welcome-title">
+              <span>InmoHouse</span>
+            </h3>
+          </div>
         } @else {
-          <span>IH</span>
+          <div class="brand-section">
+            <div class="logo-container">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9,22 9,12 15,12 15,22"/>
+              </svg>
+            </div>
+            <h3 class="welcome-title">
+              <span>IH</span>
+            </h3>
+          </div>
         }
       </h2>
 
@@ -49,18 +69,18 @@
         }
       </mat-nav-list>
     </div>
-
-    <div class="logout-container">
-       <button mat-flat-button color="warn" (click)="logout()">
-         <mat-icon>logout</mat-icon>
-         @if (isSidenavExpanded()) {
-           <span>Cerrar Sesión</span>
-         }
-       </button>
-    </div>
   </mat-sidenav>
 
   <mat-sidenav-content class="main-content">
-    <router-outlet></router-outlet>
+    <mat-toolbar class="dashboard-toolbar">
+      <span class="toolbar-spacer">Bienvenido</span>
+      <button mat-icon-button (click)="logout()" aria-label="Cerrar sesión" class="logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

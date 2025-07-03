@@ -28,7 +28,8 @@ import { User } from '../auth/models/user.interface';
     MatListModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatToolbarModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'

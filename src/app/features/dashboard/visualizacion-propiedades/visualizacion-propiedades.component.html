@@ -1,65 +1,71 @@
-<div class="welcome-header">
-  <div class="welcome-icon-container">
-    <mat-icon>bungalow</mat-icon>
-  </div>
-  <h1 class="welcome-title">
-    Bienvenido a <span>InmoHouse</span>
-  </h1>
-  <div class="invite-text">
-    <p>Tu sistema completo de gestión inmobiliaria.</p>
-  </div>
-</div>
+<div class="main-grid">
 
-<div class="dashboard-grid">
-  <aside class="left-panel">
-    <div class="chart-container">
-      <h2>Resumen General</h2>
-      <canvas baseChart
-        [data]="barChartData"
-        [options]="barChartOptions"
-        [type]="barChartType">
-      </canvas>
-    </div>
-  </aside>
+  <mat-card class="grid-card employee-card">
+    @if(agentOfTheMonth(); as agent) {
+      <div class="content-card-information">
+        <div class="employee-header">
+          <img class="employee-avatar" src="assets/images/login-illustration.svg" alt="Ilustración de Agente">
+          <div class="employee-info">
+            <h3 class="employee-name">{{ agent.name }}</h3>
+            <p class="employee-subtitle">Empleado del Mes</p>
+          </div>
+        </div>
+        <div class="content-information">
+          <div matListItemTitle>Miembro desde:<span class="content-text"> Enero, 2024</span></div>
+          <div matListItemTitle>Correo: <span class="content-text"> {{ agent.email }}</span></div>
+          <div matListItemTitle>Teléfono: <span class="content-text"> (+57) 310 123 4567</span></div>
+          <div matListItemTitle>Categoría: <span class="content-text"> {{ agent.role | titlecase }}</span></div>
+        </div>
+      </div>
+    } @else {
+      <p>Cargando información del agente...</p>
+    }
+  </mat-card>
 
-  <main class="right-panel">
-    <div class="call-to-action-cards-container">
-      <mat-card class="call-to-action-card" routerLink="/dashboard/visualizacion/avanzada">
-        <mat-icon class="house-icon">business_center</mat-icon>
-        <mat-card-content>
-          <h3>Gestión de Propiedades</h3>
-          <p>Registra, edita y administra todo el inventario de propiedades.</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button class="btn-callto" routerLink="/dashboard/visualizacion/avanzada">Saber más...</button>
-        </mat-card-actions>
-      </mat-card>
+  <mat-card class="grid-card chart-card">
+    <mat-card-header>
+      <mat-card-title>Resumen General</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="chart-wrapper">
+        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-      <mat-card class="call-to-action-card" routerLink="/dashboard/visualizacion/avanzada">
-        <mat-icon class="house-icon">groups</mat-icon>
-        <mat-card-content>
-          <h3>CRM de Clientes</h3>
-          <p>Mantén un registro de tus clientes, preferencias e interacciones.</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button class="btn-callto" routerLink="/dashboard/visualizacion/avanzada">Saber más...</button>
-        </mat-card-actions>
-      </mat-card>
+  <mat-card class="grid-card actions-container-card">
+    <mat-card-header>
+      <mat-card-title>Acciones Rápidas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list class="actions-list">
+        <mat-list-item >
+          <mat-icon matListItemIcon class="action-icon blue">business_center</mat-icon>
+          <div matListItemTitle>Gestión de Propiedades</div>
+          <div matListItemLine>Registra, edita y administra el inventario</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon class="action-icon orange">groups</mat-icon>
+          <div matListItemTitle>CRM de Clientes</div>
+          <div matListItemLine>Mantén un registro de tus clientes</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon class="action-icon purple">bar_chart</mat-icon>
+          <div matListItemTitle>Reportes y Analytics</div>
+          <div matListItemLine>Obtén insights valiosos sobre tu negocio</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 
-      <mat-card class="call-to-action-card" routerLink="/dashboard/visualizacion/avanzada">
-        <mat-icon class="house-icon">bar_chart</mat-icon>
-        <mat-card-content>
-          <h3>Reportes y Analytics</h3>
-          <p>Obtén insights valiosos sobre tu negocio con métricas de rendimiento.</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button class="btn-callto" routerLink="/dashboard/visualizacion/avanzada">Saber más...</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </main>
-</div>
+  <mat-card class="grid-card cta-card">
+    <mat-card-content>
+      <h3>Encuentra la Propiedad Perfecta</h3>
+      <p>Utiliza nuestras herramientas avanzadas para filtrar y encontrar exactamente lo que tus clientes necesitan.</p>
+      <button mat-flat-button color="primary" routerLink="/dashboard/visualizacion/avanzada">
+        Búsqueda Avanzada
+      </button>
+    </mat-card-content>
+  </mat-card>
 
-<div class="final-invite">
-  <p>¿Listo para encontrar tu hogar ideal? ¡Explora nuestras propiedades y comienza tu búsqueda hoy mismo!</p>
 </div>
