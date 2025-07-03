@@ -119,7 +119,7 @@ cd inmohouse-backend
 npm install
 
 # Inicia el servidor del backend
-npm start
+node index.js
 
 El servidor del backend estará corriendo en http://localhost:3000.
 
