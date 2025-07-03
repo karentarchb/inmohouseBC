@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: process.env['NG_APP_API_URL']
+  apiBaseUrl: 'https://inmohouse-backend.onrender.com'
 };
