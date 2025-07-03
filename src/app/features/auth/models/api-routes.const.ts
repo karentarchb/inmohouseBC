@@ -4,24 +4,24 @@ const API_BASE_URL = environment.apiBaseUrl;
 
 export const API_ROUTES = {
   AUTH: {
-    LOGIN: `${API_BASE_URL}/api/auth/login`,
-    REGISTER: `${API_BASE_URL}/api/auth/register`,
-    ADMIN_TEST: `${API_BASE_URL}/api/auth/admin-test`,
+    LOGIN: `${environment.apiBaseUrl}/api/auth/login`,
+    REGISTER: `${environment.apiBaseUrl}/api/auth/register`,
+    ADMIN_TEST: `${environment.apiBaseUrl}/api/auth/admin-test`,
   },
   PROPERTIES: {
-    GET_ALL: `${API_BASE_URL}/api/properties`,
-    CREATE: `${API_BASE_URL}/api/properties`,
-    UPDATE: (id: number) => `${API_BASE_URL}/api/properties/${id}`,
-    DELETE: (id: number) => `${API_BASE_URL}/api/properties/${id}`,
+    GET_ALL: `${environment.apiBaseUrl}/api/properties`,
+    CREATE: `${environment.apiBaseUrl}/api/properties`,
+    UPDATE: (id: number) => `${environment.apiBaseUrl}/api/properties/${id}`,
+    DELETE: (id: number) => `${environment.apiBaseUrl}/api/properties/${id}`,
   },
   USERS: {
-    GET_ALL: `${API_BASE_URL}/api/users`,
-    GET_AGENTS: `${API_BASE_URL}/api/users/agents`,
-    CREATE: `${API_BASE_URL}/api/users`,
-    UPDATE: (id: number) => `${API_BASE_URL}/api/users/${id}`,
-    DELETE: (id: number) => `${API_BASE_URL}/api/users/${id}`,
+    GET_ALL: `${environment.apiBaseUrl}/api/users`,
+    GET_AGENTS: `${environment.apiBaseUrl}/api/users/agents`,
+    CREATE: `${environment.apiBaseUrl}/api/users`,
+    UPDATE: (id: number) => `${environment.apiBaseUrl}/api/users/${id}`,
+    DELETE: (id: number) => `${environment.apiBaseUrl}/api/users/${id}`,
   },
   STATS: {
-    GET_SUMMARY: `${API_BASE_URL}/api/stats/summary`
+    GET_SUMMARY: `${environment.apiBaseUrl}/api/stats/summary`
   }
 };
